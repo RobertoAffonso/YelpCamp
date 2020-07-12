@@ -1,9 +1,15 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/yelp_camp", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("Connected to YelpCamp DB!"))
+.catch(error => console.log(error.message));
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
