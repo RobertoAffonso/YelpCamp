@@ -18,7 +18,8 @@ authRoutes = require("./routes/index");
 // Connecting to Database
 mongoose.connect("mongodb://localhost:27017/yelp_camp", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
 .then(() => console.log("Connected to YelpCamp DB!"))
 .catch(error => console.log(error.message));
