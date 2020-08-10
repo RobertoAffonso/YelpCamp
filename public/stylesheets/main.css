@@ -13,3 +13,17 @@
 .delete-form {
     display: inline;
 }
+
+.formTitle {
+    text-align: center;
+}
+
+.formContainer {
+    width: 30%; 
+    margin: 25px auto;
+}
+
+#campgroundsDisplay {
+    display:flex; 
+    flex-wrap: wrap;
+}
