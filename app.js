@@ -9,6 +9,7 @@ var User = require("./models/user");
 var Campground = require("./models/campgrounds");
 var Comment = require("./models/comment");
 var methodOverride = require("method-override");
+var flash = require("connect-flash");
 
 // Requiring Routes
 var commentRoutes = require("./routes/comments"),
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"))
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // Seeding database
 //seedDb();
@@ -47,6 +49,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
