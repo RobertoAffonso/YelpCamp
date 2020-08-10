@@ -2,8 +2,8 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center;">Add New Comment to <%= campground.name %></h1>
-        <div style="width: 30%; margin: 25px auto;">
+        <h1 class="formTitle">Add New Comment to <%= campground.name %></h1>
+        <div class="formContainer">
             <form action="/campgrounds/<%= campground.id %>/comments" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="text" name="comment[text]">
