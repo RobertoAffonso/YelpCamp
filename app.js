@@ -17,7 +17,7 @@ campgroundRoutes = require("./routes/campgrounds"),
 authRoutes = require("./routes/index");
 
 // Connecting to Database
-mongoose.connect("mongodb://localhost:27017/yelp_camp", {
+mongoose.connect("mongodb+srv://admin:adminyelpcamp1@cluster0.1zqzv.mongodb.net/yelp_camp?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
