@@ -59,6 +59,7 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // Starting the Server in port 3000.
-app.listen(3000, function() {
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
     console.log("Starting the YelpCamp App....");
 });
