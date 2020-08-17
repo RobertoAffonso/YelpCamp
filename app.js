@@ -16,8 +16,8 @@ var commentRoutes = require("./routes/comments"),
 campgroundRoutes = require("./routes/campgrounds"),
 authRoutes = require("./routes/index");
 
-// Connecting to Database
-mongoose.connect("mongodb+srv://admin:adminyelpcamp1@cluster0.1zqzv.mongodb.net/yelp_camp?retryWrites=true&w=majority", {
+// Connecting to Database 
+mongoose.connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
