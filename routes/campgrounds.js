@@ -5,16 +5,8 @@ var middleware = require("../middleware");
 const { route } = require("./comments");
 
 // INDEX - Show all Campgrounds
-router.get("/", function(req, res) {
-    // res.render("campgrounds", {campgrounds: campgrounds});
-    Campground.find({}, function(err, allCampgrounds){
-        if(err) {
-            console.log("There was an error loading all campgrounds.");
-            console.log(err);
-        } else {
-            res.render("campgrounds/index", {campgrounds: allCampgrounds});
-        }
-    });
+router.get("/", middleware.loadCampgrounds, function(req, res) {
+    res.render("campgrounds/index",{campgrounds:res.locals.foundCampgrounds});
 });
 
 // CREATE - Add new Campground to Database.
@@ -84,5 +76,6 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
         }
     })
 });
+
 
 module.exports = router;

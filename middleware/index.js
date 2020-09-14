@@ -50,6 +50,40 @@ middlewareObj.isLoggedIn = function (req, res, next) {
     }
     req.flash("error", "You need to be logged in to do that");
     res.redirect("/login");
+};
+
+middlewareObj.loadCampgrounds = function(req, res, next) {
+    if(req.query && req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search));
+        Campground.find({name:regex}, function(err, foundCampgrounds) {
+            if(err){
+                req.flash("error", "There was an error loading the campgrounds.");
+                res.redirect("back");
+            } else {
+                if(foundCampgrounds.length === 0) {
+                    req.flash("error", "No campgrounds match that query, please try again.");
+                    res.redirect("back");
+                } else {
+                    res.locals.foundCampgrounds = foundCampgrounds;
+                    next();
+                }
+            }
+        });
+    } else {
+        Campground.find({}, function(err, foundCampgrounds){
+           if(err){
+               console.log(err);
+           } else {
+            res.locals.foundCampgrounds = foundCampgrounds;
+            next();
+        }
+    });
 }
+};
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
 
 module.exports = middlewareObj;
