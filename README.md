@@ -6,6 +6,7 @@ It was built in order to practice my Javascript skills, in the future i might up
 
 <ul>
   <li><s>Migrate to Bootstrap 4</s></li>
+    <li><s>Add fuzzy search</s></li>
   <li>Add an Admin role</li>
   <li>Translate the main messages according to the user locale</li>
   <li>Add payment options</li>
